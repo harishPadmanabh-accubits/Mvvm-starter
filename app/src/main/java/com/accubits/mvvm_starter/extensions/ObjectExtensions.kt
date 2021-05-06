@@ -37,3 +37,5 @@ fun Any.toJsonString():String{
 fun <T : Any> String.fromJson(destination:Class<T>): T {
     return Gson().fromJson(this,destination)
 }
+
+
