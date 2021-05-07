@@ -6,5 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 
 object Injection {
 
-
+    fun provideViewModelFactory(application: Application, context: Context): ViewModelProvider.Factory {
+        return CustomViewModelFactory(application)
+    }
 }
