@@ -1,4 +1,4 @@
-package com.accubits.mvvm_starter.network.exceptions
+package com.accubits.mvvm_starter.data.network.exceptions
 
 import java.io.IOException
 

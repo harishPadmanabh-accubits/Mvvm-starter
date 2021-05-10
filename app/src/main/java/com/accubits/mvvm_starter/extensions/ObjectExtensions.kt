@@ -1,6 +1,6 @@
 package com.accubits.mvvm_starter.extensions
 
-import androidx.lifecycle.ViewModel
+import android.content.SharedPreferences
 import com.google.gson.Gson
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -36,6 +36,18 @@ fun Any.toJsonString():String{
 
 fun <T : Any> String.fromJson(destination:Class<T>): T {
     return Gson().fromJson(this,destination)
+}
+
+// add entry in shared preference
+fun SharedPreferences.putAny(key: String, value: Any) {
+    when (value) {
+        is String -> edit().putString(key, value).apply()
+        is Int -> edit().putInt(key, value).apply()
+        is Boolean -> edit().putBoolean(key,value).apply()
+        is Long -> edit().putLong(key,value).apply()
+        else ->
+            edit().putString(key,Gson().toJson(value)).apply()
+    }
 }
 
 

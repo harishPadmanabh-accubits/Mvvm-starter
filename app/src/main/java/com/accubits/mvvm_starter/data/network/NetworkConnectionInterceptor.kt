@@ -1,12 +1,11 @@
-package com.accubits.mvvm_starter.network
+package com.accubits.mvvm_starter.data.network
 
 import android.content.Context
-import com.accubits.mvvm_starter.network.exceptions.NoInternetException
+import com.accubits.mvvm_starter.data.network.exceptions.NoInternetException
 import com.accubits.mvvm_starter.utils.CommonUtils
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
-import java.lang.Exception
 
 class NetworkConnectionInterceptor (val context: Context) : Interceptor {
 

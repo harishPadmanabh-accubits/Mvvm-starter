@@ -1,4 +1,4 @@
-package com.accubits.mvvm_starter.network
+package com.accubits.mvvm_starter.data.network
 
 import android.content.Context
 import com.accubits.mvvm_starter.BuildConfig
