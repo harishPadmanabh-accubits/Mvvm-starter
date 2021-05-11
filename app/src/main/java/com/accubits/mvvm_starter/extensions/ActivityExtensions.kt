@@ -1,6 +1,7 @@
 package com.accubits.mvvm_starter.extensions
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.accubits.mvvm_starter.utils.Injection
@@ -25,6 +26,9 @@ fun AppCompatActivity.doLogWithTag(tag:String,message:String,type:LoggingKeys = 
           Timber.e("Caught in doLogWithTag $e")
     }
 }
+
+fun <T : AndroidViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =
+        ViewModelProviders.of(this).get(viewModelClass)
 
 enum class LoggingKeys{
     DEBUG,INFO,ERROR
