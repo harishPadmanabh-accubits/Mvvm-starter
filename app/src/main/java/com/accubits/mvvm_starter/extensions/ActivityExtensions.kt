@@ -13,9 +13,15 @@ import com.accubits.mvvm_starter.utils.Injection
 import timber.log.Timber
 import java.lang.Exception
 
+/**
+ * Get viewmodel
+ */
 fun <T : ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =
     ViewModelProviders.of(this).get(viewModelClass)
 
+/**
+ * Get viewmodel with custom viewmodel factory
+ */
 fun <T : ViewModel> AppCompatActivity.obtainViewModelWithFactory(viewModelClass: Class<T>) =
         ViewModelProviders.of(this,
                 Injection.provideViewModelFactory(application!!, applicationContext)).get(viewModelClass)
@@ -32,6 +38,9 @@ fun doLogWithTag(tag:String,message:String,type:LoggingKeys = LoggingKeys.ERROR)
     }
 }
 
+/**
+ * Get AndroidViewModel
+ */
 fun <T : AndroidViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =
         ViewModelProviders.of(this).get(viewModelClass)
 

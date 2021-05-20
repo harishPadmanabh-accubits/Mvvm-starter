@@ -36,16 +36,6 @@ fun <T : Any?> MutableLiveData<T>.default(initialValue:T) = apply {
     }
 }
 
-//TOAST-short
-fun Context.showShortToast(message:String?) = message?.let {message->
-    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-}
-
-//Toast-long
-fun Context.showLongToast(message:String?) = message?.let {message->
-    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-}
-
 //load imageView with image url
 fun ImageView.loadImageWithUrl(imageUrl : String?){
     try{
@@ -108,19 +98,22 @@ fun ImageView.loadImageWithPlaceHolder(imageUrl: String?, placeHolderResId : Int
     e.printStackTrace()
 }
 
-//hide view
-fun View.hide() {
-    visibility = GONE
+fun View.isVisibile(): Boolean = this.visibility == View.VISIBLE
+
+fun View.isGone(): Boolean = this.visibility == View.GONE
+
+fun View.isInvisible(): Boolean = this.visibility == View.INVISIBLE
+
+fun View.makeVisible() {
+    this.visibility = View.VISIBLE
 }
 
-//show view
-fun View.show() {
-    visibility = VISIBLE
+fun View.makeGone() {
+    this.visibility = View.GONE
 }
 
-//make view invisible
-fun View.invible(){
-    visibility = INVISIBLE
+fun View.makeInvisible() {
+    this.visibility = View.INVISIBLE
 }
 
 

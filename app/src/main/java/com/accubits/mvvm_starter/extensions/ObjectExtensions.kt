@@ -12,6 +12,7 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
@@ -43,15 +44,10 @@ fun String.getDateUnixTime(): Long {
     throw ParseException("Please Enter a valid date", 0)
 }
 
+/**
+ * Check any object is null.
+ */
 fun Any?.isNull() = this == null
-
-fun Any.toJsonString():String{
-    return Gson().toJson(this)
-}
-
-fun <T : Any> String.fromJson(destination:Class<T>): T {
-    return Gson().fromJson(this,destination)
-}
 
 // add entry in shared preference
 fun SharedPreferences.putAny(key: String, value: Any) {
@@ -144,7 +140,7 @@ fun String.convertStringToDate(simpleDateFormatPattern: String): Date? {
     return value
 }
 
-/**
+/*
  * Wrapping try/catch to ignore catch block
  */
 inline fun <T> justTry(block: () -> T) = try {
@@ -170,35 +166,47 @@ inline fun lollipopAndAbove(block: () -> Unit) {
     }
 }
 
-
-fun View.isVisibile(): Boolean = this.visibility == View.VISIBLE
-
-fun View.isGone(): Boolean = this.visibility == View.GONE
-
-fun View.isInvisible(): Boolean = this.visibility == View.INVISIBLE
-
-fun View.makeVisible() {
-    this.visibility = View.VISIBLE
-}
-
-fun View.makeGone() {
-    this.visibility = View.GONE
-}
-
-fun View.makeInvisible() {
-    this.visibility = View.INVISIBLE
-}
-
+/*Intent with extras
+* @Params(destinationClass::class.java, extras
+* */
 fun <T> Context.openActivity(it: Class<T>, extras: Bundle.() -> Unit = {}) {
     val intent = Intent(this, it)
     intent.putExtras(Bundle().apply(extras))
     startActivity(intent)
 }
-
+/*Intent
+* @Params(destinationClass::class.java)
+*/
 fun <T> Context.openActivity(it: Class<T>) {
     val intent = Intent(this, it)
     startActivity(intent)
 }
+
+
+/* Convert any object to Json */
+fun Any.toJson():String{
+    return Gson().toJson(this)
+}
+
+/* Convert  json string to its object.
+@Params(destination class)
+*/
+
+fun <T : Any>  String.fromJson(any:Class<T>): T {
+    return Gson().fromJson(this,any)
+}
+
+//TOAST-short
+fun Context.showShortToast(message:String?) = message?.let {message->
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+//Toast-long
+fun Context.showLongToast(message:String?) = message?.let {message->
+    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+}
+
+
 
 
 

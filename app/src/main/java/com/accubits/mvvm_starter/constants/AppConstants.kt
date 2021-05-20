@@ -1,7 +1,9 @@
 package com.accubits.mvvm_starter.constants
 
 
-//Add your app constant values here
+/**
+ * Add your app constant values here
+ */
 
 const val BASE_URL:String = ""
 const val DATABASE_NAME = "app_master_db"

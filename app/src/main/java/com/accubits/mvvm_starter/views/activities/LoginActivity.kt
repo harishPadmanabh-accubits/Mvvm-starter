@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.accubits.mvvm_starter.R
+import com.accubits.mvvm_starter.extensions.makeVisible
 import com.accubits.mvvm_starter.extensions.openActivity
-import com.accubits.mvvm_starter.extensions.show
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
                 openActivity(RegistrationActivity::class.java)
             }
             R.id.btn_use_password->{
-                til_password.show()
+                til_password.makeVisible()
             }
         }
     }

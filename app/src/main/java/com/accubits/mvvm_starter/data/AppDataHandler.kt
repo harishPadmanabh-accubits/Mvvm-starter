@@ -5,8 +5,9 @@ import android.content.SharedPreferences
 import com.accubits.mvvm_starter.R
 import com.accubits.mvvm_starter.extensions.putAny
 
-//Add all app date prefernces here for easy handling .
-// Setup with a setter and getter for the props and call wherever needed.
+/**
+ * Handles all shared preferences data
+ */
 
 object AppDataHandler {
     private var preferences: SharedPreferences? = null

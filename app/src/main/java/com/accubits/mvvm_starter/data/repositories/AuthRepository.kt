@@ -9,7 +9,6 @@ class AuthRepository(val context: Context) {
 
     var authStatus = MutableLiveData<AuthKeys>()
     val database = AppDatabase.getDatabase(context)
-    val userDao = database.getUserDao()
 
 
 

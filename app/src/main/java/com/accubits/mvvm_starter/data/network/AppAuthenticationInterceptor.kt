@@ -5,7 +5,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 /*
-* Add custom auth headers in the builder
+* Add custom auth headers  in the builder
 * */
 class AppAuthenticationInterceptor (var appContext: Context) : Interceptor {
 
