@@ -5,16 +5,15 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.accubits.mvvm_starter.R
 import com.accubits.mvvm_starter.data.models.Category
-import com.accubits.mvvm_starter.extensions.doLogWithTag
-import com.accubits.mvvm_starter.extensions.obtainViewModel
-import com.accubits.mvvm_starter.extensions.showLongToast
+import com.accubits.mvvm_starter.extensions.*
 import com.accubits.mvvm_starter.viewmodels.AuthViewModel
 import com.accubits.mvvm_starter.viewmodels.FoodsViewModel
 import com.accubits.mvvm_starter.views.adapters.CategoryAdapter
+import com.accubits.mvvm_starter.views.adapters.CategorySelectionListener
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer
 import kotlinx.android.synthetic.main.activity_main.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(),CategorySelectionListener {
 
     private  lateinit var viewModel: FoodsViewModel
 
@@ -32,7 +31,6 @@ class HomeActivity : AppCompatActivity() {
                 showLongToast(it)
             })
             categoriesData.observe(this@HomeActivity, Observer {
-                doLogWithTag("Observing catgeoies","${it.size}")
                 setupRecyclerView(it)
             })
         }
@@ -40,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupRecyclerView(categories: List<Category>?) {
         categories?.let {data->
-            val adapter = CategoryAdapter().also {
+            val adapter = CategoryAdapter(this).also {
                 it.submitList(data)
             }
             recyclerView.adapter = adapter
@@ -60,5 +58,11 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         viewModel = obtainViewModel(FoodsViewModel::class.java)
+    }
+
+    override fun onCategorySelected(item: Category) {
+        openActivity(FoodListActivity::class.java){
+            putString("selected_category",item.toJson())
+        }
     }
 }

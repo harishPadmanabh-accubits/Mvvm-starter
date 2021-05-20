@@ -1,9 +1,11 @@
 package com.accubits.mvvm_starter.extensions
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
@@ -14,6 +16,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModel
 import com.accubits.mvvm_starter.BuildConfig
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -216,5 +219,21 @@ fun AppCompatImageView.loadImageWithVeil(url:String, veilLayout: VeilLayout){
             .into(this)
     }
     }
+fun <T> Context.openActivity(it: Class<T>, extras: Bundle.() -> Unit = {}) {
+    val intent = Intent(this, it)
+    intent.putExtras(Bundle().apply(extras))
+    startActivity(intent)
+}
+fun <T> Context.openActivity(it: Class<T>) {
+    val intent = Intent(this, it)
+    startActivity(intent)
+}
 
+fun Any.toJson():String{
+    return Gson().toJson(this)
+}
+
+fun <T : Any>  String.FromJson(any:Class<T>): T {
+    return Gson().fromJson(this,any)
+}
 

@@ -24,7 +24,7 @@ object CategoryDiffUtils : DiffUtil.ItemCallback<Category>(){
 
 }
 
-class CategoryAdapter ():ListAdapter<Category,CategoryAdapter.ViewHolder>(CategoryDiffUtils) {
+class CategoryAdapter (val listener: CategorySelectionListener):ListAdapter<Category,CategoryAdapter.ViewHolder>(CategoryDiffUtils) {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
@@ -40,6 +40,13 @@ class CategoryAdapter ():ListAdapter<Category,CategoryAdapter.ViewHolder>(Catego
             iv_category_image.loadImageWithVeil(item.strCategoryThumb,item_veilLayout)
             tv_category_title.text = item.strCategory
             tv_category_desc.text = item.strCategoryDescription
+            setOnClickListener {
+                listener.onCategorySelected(item)
+            }
         }
     }
+}
+
+interface CategorySelectionListener{
+    fun onCategorySelected(item:Category)
 }
