@@ -79,6 +79,8 @@ inline fun AppCompatActivity.transact(action: FragmentTransaction.() -> Unit) {
         action()
     }.commit()
 }
+
+
 enum class LoggingKeys{
     DEBUG,INFO,ERROR
 }

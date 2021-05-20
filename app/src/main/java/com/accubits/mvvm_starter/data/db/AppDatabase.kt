@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.accubits.mvvm_starter.constants.DATABASE_NAME
 import com.accubits.mvvm_starter.data.db.dao.UserDao
 import com.accubits.mvvm_starter.data.models.UserModel
 
@@ -16,7 +17,7 @@ abstract class AppDatabase :RoomDatabase() {
 
 
     companion object{
-        private const val mainDatabase="prod_database"
+        private const val mainDatabase= DATABASE_NAME
         @Volatile
         private var INSTANCE:AppDatabase?=null
 
