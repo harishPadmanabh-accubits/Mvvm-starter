@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="500dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardBackgroundColor="#DFB0B0"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="12dp"
+    android:foreground="?attr/selectableItemBackground">
+    <com.skydoves.androidveil.VeilLayout
+        android:id="@+id/item_veilLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:veilLayout_baseAlpha="0.9"
+        app:veilLayout_baseColor="@color/purple_200"
+        app:veilLayout_dropOff="0.5"
+        app:veilLayout_highlightAlpha="1.0"
+        app:veilLayout_radius="12dp"
+        app:veilLayout_shimmerEnable="true"
+        app:veilLayout_veiled="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.skydoves.transformationlayout.TransformationLayout
+                android:id="@+id/transformationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:transformation_duration="500"
+                app:transformation_pathMode="arc">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_category_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </com.skydoves.transformationlayout.TransformationLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_category_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/black"
+                tools:text="TITLE"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:autoSizeMaxTextSize="26sp"
+                app:autoSizeMinTextSize="16sp"
+                app:autoSizeTextType="uniform" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_category_desc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:scrollbars="vertical"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:autoSizeMaxTextSize="26sp"
+                app:autoSizeMinTextSize="16sp"
+                app:autoSizeTextType="uniform"
+                tools:text="Loreim Ipsum" />
+
+        </LinearLayout>
+    </com.skydoves.androidveil.VeilLayout>
+
+</androidx.cardview.widget.CardView>

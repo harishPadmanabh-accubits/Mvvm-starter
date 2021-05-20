@@ -5,14 +5,21 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.accubits.mvvm_starter.data.db.dao.FoodDao
 import com.accubits.mvvm_starter.data.db.dao.UserDao
+import com.accubits.mvvm_starter.data.models.Category
+import com.accubits.mvvm_starter.data.models.Food
+import com.accubits.mvvm_starter.data.models.FoodLisResponse
 import com.accubits.mvvm_starter.data.models.UserModel
 
 
-@Database(version = 1, entities = [UserModel::class])
+@Database(version = 2, entities = [UserModel::class,
+Category::class, Food::class
+],exportSchema = true)
 abstract class AppDatabase :RoomDatabase() {
 
     abstract fun getUserDao():UserDao
+    abstract fun getFoodDao():FoodDao
 
 
     companion object{
@@ -43,7 +50,7 @@ abstract class AppDatabase :RoomDatabase() {
                             }
                         })
                         //ADD MIGRATIONS
-                     //   .addMigrations(MIGRATION_1_2)
+                        .addMigrations(MIGRATION_1_2)
                         .build()
 
                 INSTANCE=instance

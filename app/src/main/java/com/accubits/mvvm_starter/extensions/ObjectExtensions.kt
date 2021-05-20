@@ -12,9 +12,17 @@ import android.view.WindowManager
 import android.widget.EditText
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import com.accubits.mvvm_starter.BuildConfig
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.google.gson.Gson
+import com.skydoves.androidveil.VeilLayout
+import timber.log.Timber
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -188,5 +196,25 @@ fun View.makeInvisible() {
 }
 
 
+fun AppCompatImageView.loadImageWithVeil(url:String, veilLayout: VeilLayout){
+    if(url.isNullOrEmpty()){
+        Timber.e("Empty Url Passed")
+    }else{
+        Glide.with(context)
+            .load(url)
+            .listener(object : RequestListener<Drawable> {
+                override fun onLoadFailed(p0: GlideException?, p1: Any?, p2: Target<Drawable>?, p3: Boolean): Boolean {
+                    veilLayout.unVeil()
+                    return false
+                }
+                override fun onResourceReady(p0: Drawable?, p1: Any?, p2: Target<Drawable>?, p3: DataSource?, p4: Boolean): Boolean {
+                    //do something when picture already loaded
+                    veilLayout.unVeil()
+                    return false
+                }
+            })
+            .into(this)
+    }
+    }
 
 

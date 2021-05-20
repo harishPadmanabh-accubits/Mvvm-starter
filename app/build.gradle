@@ -103,6 +103,15 @@ dependencies {
     //Sandwich
     implementation "com.github.skydoves:sandwich:1.0.9"
 
+    // android veil
+    implementation "com.github.skydoves:androidveil:1.0.8"
+
+    // discrete scrollview
+    implementation "com.yarolegovich:discrete-scrollview:1.4.9"
+
+    implementation "com.github.skydoves:transformationlayout:1.0.4"
+
+
 
 
 }

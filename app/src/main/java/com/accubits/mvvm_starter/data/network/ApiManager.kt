@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 //pass either Application or context scopes in constructor . Use it from Repositories
 class ApiManger(appContext: Context) {
-    var api : ApiServices ?= null
+    lateinit var api : ApiServices
     init{
         val gson = GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .create()
@@ -41,3 +41,4 @@ class ApiManger(appContext: Context) {
 
 
 //https://medium.com/programming-lite/retrofit-2-handling-network-error-defc7d373ad1
+//https://blog.mindorks.com/using-retrofit-with-kotlin-coroutines-in-android
