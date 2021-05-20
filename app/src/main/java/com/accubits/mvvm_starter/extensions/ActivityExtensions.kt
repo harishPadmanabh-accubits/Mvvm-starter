@@ -15,7 +15,7 @@ fun <T : ViewModel> AppCompatActivity.obtainViewModelWithFactory(viewModelClass:
         ViewModelProviders.of(this,
                 Injection.provideViewModelFactory(application!!, applicationContext)).get(viewModelClass)
 
-fun AppCompatActivity.doLogWithTag(tag:String,message:String,type:LoggingKeys = LoggingKeys.ERROR){
+fun doLogWithTag(tag:String,message:String,type:LoggingKeys = LoggingKeys.ERROR){
     try{
         when(type){
             LoggingKeys.DEBUG->Timber.tag(tag).d(message)

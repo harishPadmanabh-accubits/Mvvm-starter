@@ -14,6 +14,8 @@ class BaseApplication : Application() {
         //set launch time
         AppDataHandler.init(this).setLastLaunchTime(System.currentTimeMillis())
 
+        //init sdks
+
 
     }
 }
