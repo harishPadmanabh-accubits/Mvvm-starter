@@ -7,7 +7,7 @@ import retrofit2.Callback
 
 
 /**
- * A generic class that holds a value with its loading status.
+ * A generic class that holds a value with its loading status
  */
 class Resource<T> {
 

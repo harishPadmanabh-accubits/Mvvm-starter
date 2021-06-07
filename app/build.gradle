@@ -103,6 +103,10 @@ dependencies {
     //Sandwich
     implementation "com.github.skydoves:sandwich:1.0.9"
 
+    //Fragments
+    implementation("androidx.fragment:fragment-ktx:1.3.4")
+
+
 
 
 }
